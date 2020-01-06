@@ -27,12 +27,31 @@ static PyMethodDef PyanaMethods[] = {
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
+static PyModuleDef moduleDef = {
+	PyModuleDef_HEAD_INIT,
+	"_pyana",
+	"PyAna Reader/Writer",
+	-1,
+	PyanaMethods,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
 
 // Init module methods
-PyMODINIT_FUNC init_pyana(void) {
-    (void) Py_InitModule("_pyana", PyanaMethods);
+PyMODINIT_FUNC PyInit__pyana(void) {
+	PyObject* m;
+	m = PyModule_Create(&moduleDef);
+
+	if (m == NULL)
+		return NULL;
+
 	// Init numpy usage
 	import_array();
+
+	return m;
 }
 
 /*!

@@ -26,7 +26,7 @@ Copyright (c) 2009--2011 Tim van Werkhoven. All rights reserved.
 import sys
 import os
 import unittest
-import _pyana
+from ._pyana import fzread as _fzread, fzwrite as _fzwrite
 
 ## Functions for loading in ANA files
 
@@ -40,7 +40,7 @@ def fzread(filename, debug=0):
 	if not os.path.isfile(filename):
 		raise IOError("File does not exist!")
 	
-	data = _pyana.fzread(filename, debug)
+	data = _fzread(filename, debug)
 	return data
 
 
@@ -75,9 +75,9 @@ def fzwrite(filename, data, compress=1, comments=False, debug=0):
 	written = pyana.fzwrite(filename, data, compress=1, comments=False)
 	"""
 	if (comments):
-		return _pyana.fzwrite(filename, data, compress, comments, debug)
+		return _fzwrite(filename, data, compress, comments, debug)
 	else:
-		return _pyana.fzwrite(filename, data, compress, '', debug)
+		return _fzwrite(filename, data, compress, '', debug)
 
 
 def writeto(filename, data, compress=1, comments=False, debug=0):

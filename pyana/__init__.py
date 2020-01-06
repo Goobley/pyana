@@ -3,5 +3,5 @@ __all__ = ["pyana"]
 __version__ = '0.4.1'
 
 # Import routines
-from pyana import *
+from .pyana import *
 import pyana as core
