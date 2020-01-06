@@ -8,12 +8,8 @@ Copyright (c) 2009--2011 Tim van Werkhoven. All rights reserved.
 """
 import sys
 
-try:
-	import numpy
-	from numpy.distutils.core import setup, Extension
-except:
-	print "Could not load NumPy (numpy.distutils.core), required by this package. Aborting"
-	sys.exit(1)
+import numpy
+from numpy.distutils.core import setup, Extension
 
 module_pyana = Extension('_pyana',
                     define_macros = [('MAJOR_VERSION', '0'),
